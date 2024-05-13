@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div *ngIf="!userLogin">
+    <h3>Bienvenido</h3>
+  </div>
+
+  <div *ngIf="userLogin">
+    <h3>Bienvenido {{ userName }}</h3>
+  </div>
+</div>

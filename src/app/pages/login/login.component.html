@@ -1,0 +1,44 @@
+<div *ngIf="message" class="alert alert-danger alert-dismissible fade show container" role="alert">
+  {{ message }}
+</div>
+
+
+<form [formGroup]="loginForm" class="container" (ngSubmit)="login()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Dirección de correo</label>
+    <input formControlName="email" required placeholder="test@gmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">Escribe tu Email</div>
+    
+    <div *ngIf="email?.hasError('required') && (email?.touched || email?.dirty)">
+      <small class="text-danger">Email es requerido</small>
+    </div>
+
+    <div *ngIf="email?.hasError('email') && (email?.touched || email?.dirty)">
+      <small class="text-danger">El correo no es válido</small>
+    </div>
+
+    <div *ngIf="email?.hasError('pattern') && (email?.touched || email?.dirty)">
+      <small class="text-danger">El correo no es válido</small>
+    </div>
+
+    <div *ngIf="email?.hasError('minlength') && (email?.touched || email?.dirty)">
+      <small class="text-danger">El correo no es válido</small>
+    </div>
+
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+    <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+    <div *ngIf="password.hasError('required') && (password.touched || password.dirty)">
+      <small class="text-danger">La Contraseña es requerida</small>
+    </div>
+  </div>
+  
+  
+  <div class="mt-3 d-flex flex-column align-items-center">
+    <button type="submit" class="btn btn-primary">Enviar</button>&nbsp;&nbsp;
+    <small class="text-danger">¿Aun no tienes cuenta?</small>
+    <button type="button" class="btn btn-primary" routerLink="/subscription">Registrate</button>
+  </div>
+
+</form>

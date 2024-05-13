@@ -1,0 +1,88 @@
+<app-nav-bar></app-nav-bar>
+
+
+<div *ngIf="messageError" class="alert alert-danger alert-dismissible fade show container" role="alert">
+  {{ messageError }}
+</div>
+
+<div *ngIf="messageSuccess" class="alert alert-success alert-dismissible fade show container" role="alert">
+  {{ messageSuccess }}
+</div>
+
+
+<form [formGroup]="subscriptionForm" class="container" (ngSubmit)="login()">
+  
+  <div class="mb-3">
+    <label for="exampleName" class="form-label">Name</label>
+    <input formControlName="name" required placeholder="John" type="text" class="form-control" id="exampleName" aria-describedby="nameHelp">
+    <div id="nameHelp" class="form-text">Write your Name</div>
+    
+    <div *ngIf="name?.hasError('required') && (name?.touched || name?.dirty)">
+      <small class="text-danger">Name is required</small>
+    </div>
+
+    <div *ngIf="name?.hasError('name') && (name?.touched || name?.dirty)">
+      <small class="text-danger">Name is not valid</small>
+    </div>
+
+    <div *ngIf="name?.hasError('pattern') && (name?.touched || name?.dirty)">
+      <small class="text-danger">name is not valid</small>
+    </div>
+
+    <div *ngIf="name?.hasError('minlength') && (name?.touched || name?.dirty)">
+      <small class="text-danger">Name is too short</small>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleLastName" class="form-label">LastName</label>
+    <input formControlName="lastName" required placeholder="Doe" type="text" class="form-control" id="exampleLastName" aria-describedby="lastNameHelp">
+    <div id="lastNameHelp" class="form-text">Write your LastName</div>
+    
+    <div *ngIf="LastName?.hasError('required') && (LastName?.touched || LastName?.dirty)">
+      <small class="text-danger">LastName is required</small>
+    </div>
+
+    <div *ngIf="LastName?.hasError('LastName') && (LastName?.touched || LastName?.dirty)">
+      <small class="text-danger">LastName is not valid</small>
+    </div>
+
+    <div *ngIf="LastName?.hasError('pattern') && (LastName?.touched || LastName?.dirty)">
+      <small class="text-danger">LastName is not valid</small>
+    </div>
+
+    <div *ngIf="LastName?.hasError('minlength') && (LastName?.touched || LastName?.dirty)">
+      <small class="text-danger">LastName is too short</small>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="examplePhone" class="form-label">Phone</label>
+    <input formControlName="phone" required placeholder="123456789" type="number" class="form-control" id="examplePhone" aria-describedby="phoneHelp">
+    <div id="phoneHelp" class="form-text">Write your Phone</div>
+    
+    <div *ngIf="phone?.hasError('required') && (phone?.touched || phone?.dirty)">
+      <small class="text-danger">Phone is required</small>
+    </div>
+
+    <div *ngIf="phone?.hasError('pattern') && (phone?.touched || phone?.dirty)">
+      <small class="text-danger">Phone is not valid</small>
+    </div>
+
+    <div *ngIf="phone?.hasError('phone') && (phone?.touched || phone?.dirty)">
+      <small class="text-danger">Phone is not valid</small>
+    </div>
+
+    <div *ngIf="phone?.hasError('minlength') && (phone?.touched || phone?.dirty)">
+      <small class="text-danger">Phone is too short</small>
+    </div>
+
+  </div>
+
+  <div class="mt-3 d-flex flex-column align-items-center">
+    <button type="submit" class="btn btn-primary"> Register </button>&nbsp;&nbsp;
+  </div>
+
+</form>
